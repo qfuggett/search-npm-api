@@ -1,4 +1,5 @@
 import * as esbuild from 'esbuild-wasm';
+import { unpkgPathPlugin } from './plugins/unpkg-path-plugin';
 import { useState, useEffect, useRef } from 'react';
 import ReactDOM from 'react-dom';
 
@@ -25,13 +26,22 @@ const App = () => {
             return;
         }
 
-        // code that we want to transpile
-        const result = await ref.current.transform(input, {
-            loader: 'jsx',
-            target: 'es2015'
+        // code that we want to transpile for esbuild
+        // const result = await ref.current.transform(input, {
+        //     loader: 'jsx',
+        //     target: 'es2015'
+        // });
+
+        const result = await ref.current.build({
+            entryPoints: ['index.js'],
+            bundle: true,
+            write: false,
+            plugins: [unpkgPathPlugin()]
         });
 
-        setCode(result.code);
+        // console.log(result);
+
+        setCode(result.outputFiles[0].text);
     };
 
     return <div>
