@@ -33,6 +33,7 @@ const App = () => {
         // });
 
         const result = await ref.current.build({
+            // the first file that is bundled inside application
             entryPoints: ['index.js'],
             bundle: true,
             write: false,
