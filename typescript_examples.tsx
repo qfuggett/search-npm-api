@@ -89,3 +89,42 @@ const carsByMake = [
     ['camaro']
 ]; 
 // const carsByMake: string[][] = [];
+
+// Why do we care about Typed arrays? When we want to represent a collection of records with some arbitrary sort order
+// TS can do type inference when extracting values from an array
+const car = carMakers[0];
+const myCar = carMakers.pop();
+// It prevents us from adding incompatible values to the array, BUT, arrays can still contain multiple different types
+carMakers.push(100);
+
+// flexible types
+const importantDates: (Date | string)[] = [new Date()];
+importantDates.push('2010-10-10');
+importantDates.push(new Date());
+importantDates.push(100);
+
+// Tuples: array like structure that represent properties of a record in a fixed order
+const drink = {
+    color: 'brown',
+    carbonated: true,
+    sugar: 40
+};
+
+const pepsi: [string, boolean, number] = ['brown', true, 40];
+
+// OR 
+
+type Drink = [string, boolean, number];
+const pepsi: Drink = ['brown', true, 40];
+
+// Tuples are good for CSV files, but you may not work with Tuples often because they don't convey meaningul information when modeling a record
+// If you want to manage properties of data, it's best to create an object
+
+const carSpecs: [number, number] = [400, 3354];
+
+const carStats = {
+    horsepower: 400,
+    weight: 3354
+};
+
+// Interfaces and Classes work together in typescript to allow us to re-use code
