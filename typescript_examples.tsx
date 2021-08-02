@@ -128,3 +128,49 @@ const carStats = {
 };
 
 // Interfaces and Classes work together in typescript to allow us to re-use code
+// interface Vehicle {
+//     name: string;
+//     year: number;
+//     broken: boolean;
+//     summary(): string;
+// };
+
+interface Reportable {
+    summary(): string;
+};
+
+const oldCivic = {
+    name: 'civic',
+    year: 2000,
+    broken: true, 
+    summary(): string {
+        return `Name: ${this.name}`;
+    }
+};
+
+const drink2 = {
+    color: 'brown',
+    carbonated: true,
+    sugar: 40,
+    summary(): string {
+        return `My drink has ${this.sugar} grams of sugar`;
+    }
+};
+
+// This is too long, you could just create an interface/new type for your annotation
+// const printVehicle = (vehicle: {name: string; year: number; broken: boolean}): void => {
+// const printVehicle = (vehicle: Vehicle): void => {
+//     console.log(`Name: ${vehicle.name}`);
+//     console.log(`Year: ${vehicle.year}`);
+//     console.log(`Broken? ${vehicle.broken}`);
+// };
+
+const printSummary = (item: Reportable): void => {
+    console.log(item.summary());
+};
+printSummary(oldCivic);
+printSummary(drink2);
+
+// REUSABLE CODE IN TYPESCRIPT ^^
+// Create functions that accept arguments that are typed with interfaces
+// Objects/classes can decide to implement a given interface to work with a function
