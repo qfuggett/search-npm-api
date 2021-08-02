@@ -174,3 +174,44 @@ printSummary(drink2);
 // REUSABLE CODE IN TYPESCRIPT ^^
 // Create functions that accept arguments that are typed with interfaces
 // Objects/classes can decide to implement a given interface to work with a function
+
+// CLASSES
+
+class Vehicle {
+    // initialize a propery
+    // color: string = 'red';
+    // OR
+    // inside a constructor; to pass in arguments to a class
+    // constructor(color: string) {
+    //     this.color = color;
+    // }
+    constructor(public color: string) {}
+
+    protected drive(): void { // only available to child classes
+        console.log('chugga chugga');
+    }
+
+    public honk(): void {
+        console.log('beep');
+    }
+}
+
+class Car extends Vehicle {
+    constructor(public wheels: number, color:string ) {
+        super(color);  // reference to the constructor method in the parent
+    }
+    protected drive(): void { // only available ot this class; restricts access of this function
+        console.log('vroom');
+    }
+
+    private startUp(): void {
+        console.log('cccchhhhh';)
+    }
+
+    starDrivingProcess(): void {
+        this.drive();
+        this.honk();
+    }
+}
+
+const vehicle = new Vehicle();
