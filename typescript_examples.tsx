@@ -205,7 +205,7 @@ class Car extends Vehicle {
     }
 
     private startUp(): void {
-        console.log('cccchhhhh';)
+        console.log('cccchhhhh');
     }
 
     starDrivingProcess(): void {
