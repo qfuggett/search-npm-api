@@ -136933,7 +136933,7 @@ exports.Company = Company;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.CustomMap = void 0; // can be used to create instances of these, OR can be used to refer to as types when annotating, see lines 19 & 23
+exports.CustomMap = void 0;
 
 var CustomMap = function () {
   function CustomMap(divId) {
@@ -136944,8 +136944,7 @@ var CustomMap = function () {
         lng: 0
       }
     });
-  } // the OR operator limits the number of properties that mappable refers to, based on the commonalities between users and company
-  // therefore, the location will only show, because that's what's specified and is available between both
+  } // takes any argument (User, Company, etc) as long as it satisfies the Mappable interface
 
 
   CustomMap.prototype.addMarker = function (mappable) {

@@ -1,6 +1,11 @@
-import { User } from './User';
-import { Company } from './Company';
-// can be used to create instances of these, OR can be used to refer to as types when annotating, see lines 19 & 23
+// Instructions to every other class on how they can be an argument to addMarker
+// as long as they have a location, it will work
+interface Mappable {
+    location: {
+        lat: number,
+        lng: number
+    };
+}
 
 export class CustomMap {
     // remember, all properties are public by default. make sure to always modify your class properties
@@ -16,9 +21,8 @@ export class CustomMap {
         });
     }
 
-    // the OR operator limits the number of properties that mappable refers to, based on the commonalities between users and company
-    // therefore, the location will only show, because that's what's specified and is available between both
-    addMarker(mappable: User | Company): void {
+    // takes any argument (User, Company, etc) as long as it satisfies the Mappable interface
+    addMarker(mappable: Mappable): void {
         new google.maps.Marker({
             map: this.googleMap,
             position: {
