@@ -16,25 +16,17 @@ export class CustomMap {
         });
     }
 
-    addUserMarker(user: User): void {
+    // the OR operator limits the number of properties that mappable refers to, based on the commonalities between users and company
+    // therefore, the location will only show, because that's what's specified and is available between both
+    addMarker(mappable: User | Company): void {
         new google.maps.Marker({
             map: this.googleMap,
             position: {
-                lat: user.location.lat,
-                lng: user.location.lng
+                lat: mappable.location.lat,
+                lng: mappable.location.lng
             }
         });
     }
 
-    addCompanyMarker(company: Company): void {
-        new google.maps.Marker({
-            map: this.googleMap,
-            position: {
-                lat: company.location.lat,
-                lng: company.location.lng
-            }
-        });
-
-    }
 }
 
