@@ -136882,10 +136882,13 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.User = void 0; // May get typescript warning messages for imports that do not include a type definition file
 
-var faker_1 = __importDefault(require("faker"));
+var faker_1 = __importDefault(require("faker")); // we want to make sure that every instance of the User class satisfies 
+// all properties of the Mappable interface
+
 
 var User = function () {
   function User() {
+    this.color = 'red';
     this.name = faker_1.default.name.firstName();
     this.location = {
       lat: parseFloat(faker_1.default.address.latitude()),
@@ -136919,6 +136922,7 @@ var faker_1 = __importDefault(require("faker"));
 
 var Company = function () {
   function Company() {
+    this.color = 'green';
     this.companyName = faker_1.default.company.companyName();
     this.catchPhrase = faker_1.default.company.catchPhrase();
     this.location = {

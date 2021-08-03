@@ -1,11 +1,12 @@
 // Instructions to every other class on how they can be an argument to addMarker
-// as long as they have a location, it will work
-interface Mappable {
+// as long as they have a location, it will work. This prevents future bugs!
+export interface Mappable {
     location: {
         lat: number,
         lng: number
     };
     markerContent(): string;
+    color: string;
 }
 
 export class CustomMap {

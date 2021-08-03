@@ -1,13 +1,17 @@
 // May get typescript warning messages for imports that do not include a type definition file
 import faker from 'faker';
+import { Mappable } from './CustomMap';
 
 
-export class User {
+// we want to make sure that every instance of the User class satisfies 
+// all properties of the Mappable interface
+export class User implements Mappable {
     name: string;
     location: {
         lat: number;
         lng: number;
     };
+    color: string = 'red';
 
     constructor() {
         this.name = faker.name.firstName();
